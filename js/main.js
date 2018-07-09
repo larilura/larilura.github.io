@@ -11,12 +11,15 @@ firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
 
+alert("Initializing");
 if ('serviceWorker' in navigator && 'PushManager' in window) {
     console.log('Service Worker and Push is supported');
     document.querySelector('.token').innerHTML = "Service Worker and Push is supported";
+    alert("Service Worker and Push is supported");
     navigator.serviceWorker.register('js/sw.js').then(function(reg) {
         console.log(':^)', reg);
         messaging.useServiceWorker(reg);
+        alert("Requesting permission.");
         messaging.requestPermission().then(function() {
             console.log('Notification permission granted.');
             // TODO(developer): Retrieve an Instance ID token for use with FCM.
@@ -42,7 +45,7 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
         document.querySelector('.token').innerHTML = error;
         alert(error);
     });
-    } else {
+} else {
     console.warn('Push messaging is not supported');
     document.querySelector('.token').innerHTML = "Push messaging is not supported";
     alert("Push messaging is not supported");
