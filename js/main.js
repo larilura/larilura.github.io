@@ -25,9 +25,11 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
         }).then(function(token) {
             console.log(token);
             document.querySelector('.token').innerHTML = token;
+            alert(token);
         }).catch(function(err) {
             console.log('Unable to get permission to notify.', err);
             document.querySelector('.token').innerHTML = err;
+            alert(err);
         });
 
         messaging.onMessage(function(payload) {
@@ -38,8 +40,10 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
     .catch(function(error) {
         console.error('Service Worker Error', error);
         document.querySelector('.token').innerHTML = error;
+        alert(error);
     });
     } else {
     console.warn('Push messaging is not supported');
     document.querySelector('.token').innerHTML = "Push messaging is not supported";
+    alert("Push messaging is not supported");
 }
