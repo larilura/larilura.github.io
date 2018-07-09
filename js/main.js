@@ -23,7 +23,7 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
             return messaging.getToken();
         }).then(function(token) {
             console.log(token);
-            document.write("<p>", token, "</p>")
+            document.querySelector('.token').innerHTML = token;
         }).catch(function(err) {
             console.log('Unable to get permission to notify.', err);
         });
