@@ -13,6 +13,7 @@ const messaging = firebase.messaging();
 
 if ('serviceWorker' in navigator && 'PushManager' in window) {
     console.log('Service Worker and Push is supported');
+    document.querySelector('.token').innerHTML = "Service Worker and Push is supported";
     navigator.serviceWorker.register('js/sw.js').then(function(reg) {
         console.log(':^)', reg);
         messaging.useServiceWorker(reg);
