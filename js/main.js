@@ -15,6 +15,7 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
     console.log('Service Worker and Push is supported');
     navigator.serviceWorker.register('js/sw.js').then(function(reg) {
         console.log(':^)', reg);
+        messaging.useServiceWorker(reg);
         messaging.requestPermission().then(function() {
             console.log('Notification permission granted.');
             // TODO(developer): Retrieve an Instance ID token for use with FCM.
