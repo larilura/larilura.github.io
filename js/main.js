@@ -19,9 +19,12 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
             console.log('Notification permission granted.');
             // TODO(developer): Retrieve an Instance ID token for use with FCM.
             // ...
-          }).catch(function(err) {
+            return messaging.getToken();
+        }).then(function(token) {
+            console.log(token);
+        }).catch(function(err) {
             console.log('Unable to get permission to notify.', err);
-          });
+        });
     })
     .catch(function(error) {
         console.error('Service Worker Error', error);
