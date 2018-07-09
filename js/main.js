@@ -26,6 +26,10 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
         }).catch(function(err) {
             console.log('Unable to get permission to notify.', err);
         });
+        
+        messaging.onMessage(function(payload) {
+            console.log(payload);
+        });
     })
     .catch(function(error) {
         console.error('Service Worker Error', error);
