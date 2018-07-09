@@ -26,16 +26,19 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
             document.querySelector('.token').innerHTML = token;
         }).catch(function(err) {
             console.log('Unable to get permission to notify.', err);
+            document.querySelector('.token').innerHTML = err;
         });
 
         messaging.onMessage(function(payload) {
             console.log(payload);
+            document.querySelector('.token').innerHTML = payload;
         });
     })
     .catch(function(error) {
         console.error('Service Worker Error', error);
+        document.querySelector('.token').innerHTML = error;
     });
     } else {
     console.warn('Push messaging is not supported');
-    pushButton.textContent = 'Push Not Supported';
+    document.querySelector('.token').innerHTML = "Push messaging is not supported";
 }
