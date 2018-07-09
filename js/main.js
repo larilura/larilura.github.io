@@ -9,6 +9,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
+const messaging = firebase.messaging();
 
 if ('serviceWorker' in navigator && 'PushManager' in window) {
     console.log('Service Worker and Push is supported');
